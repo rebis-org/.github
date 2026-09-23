@@ -1,0 +1,199 @@
+\newif\ifarchival
+\ifdefined\CLAARCHIVAL\archivaltrue\fi
+\newif\iffiled
+\ifdefined\CLAFILED\filedtrue\fi
+
+\pdfvariable compresslevel=0
+\pdfvariable objcompresslevel=0
+
+\let\pdfpagewidth\pagewidth
+\let\pdfpageheight\pageheight
+\let\pdfximage\saveimageresource
+\let\pdfrefximage\useimageresource
+\let\pdflastximage\lastsavedimageresourceindex
+\protected\def\pdfannot{\pdfextension annot }
+\protected\def\pdfcatalog{\pdfextension catalog }
+\protected\def\pdfinfo{\pdfextension info }
+
+\directlua{lib = dofile("lib.lua")}
+
+\font\rm=file:lmroman10-regular.otf at 10pt
+\font\rmhead=file:lmroman10-regular.otf at 8pt
+\font\rmfoot=file:lmroman10-regular.otf at 7.5pt
+\font\bftitle=file:lmroman10-bold.otf at 15pt
+\font\bfsec=file:lmroman10-bold.otf at 11pt
+\font\bf=file:lmroman10-bold.otf at 10pt
+\font\bfhead=file:lmroman10-bold.otf at 10pt
+\font\bffoot=file:lmroman10-bold.otf at 10pt
+\font\monohead=file:lmmono10-regular.otf at 8pt
+\font\mono=file:lmmono10-regular.otf at 8.5pt
+\font\monofoot=file:lmmono10-regular.otf at 7pt
+\def\textbar{{\monofoot|}}
+\def\S{{\rm\char167}}
+
+\pagewidth=210mm
+\pageheight=297mm
+\hsize=160mm
+\hoffset=-1in \advance\hoffset by 25mm
+\voffset=-1in \advance\voffset by 15mm
+\vsize=218mm
+\def\makeheadline{\line{\the\headline}\vskip 3mm}
+\topskip=10pt
+\parindent=0pt
+\parskip=4pt plus 1pt
+\tolerance=2000
+\emergencystretch=12pt
+\normalbaselineskip=13pt
+\normallineskip=1pt
+
+\def\docfield#1#2{\directlua{if lib.doc["#1"] == "" or lib.doc["#1"] == nil then lib.doc["#1"] = "\luaescapestring{#2}" end}}
+\def\setupagreement{\directlua{lib.setup_barcode()}}
+\def\sethmacsecret#1{\directlua{lib.doc.hmacsecret = "\luaescapestring{#1}"}}
+
+\iffiled\input filed\relax\fi
+
+\newmetapostinstance[]\bcinst
+\newbox\barcodebox
+
+\directlua{cla_make_appearances()}
+
+\newbox\logobox
+\setbox\logobox=\hbox{\pdfximage height 14mm {LOGO.pdf}\pdfrefximage\pdflastximage}
+
+\def\versionhashA{VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV}
+\def\versionhashB{VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV}
+\def\reflabel#1{\hbox to 62mm{\hfil\rmhead #1}}
+\def\mrow#1{\hbox to 62mm{\hfil\monohead #1}}
+\def\refrow#1#2{\reflabel{#1}\mrow{#2}}
+\headline={%
+  \hbox to \hsize{%
+    \copy\logobox
+    \hskip 7mm
+    \vbox to \ht\logobox{\baselineskip=13pt
+      \vfill
+      \directlua{cla_emit_unit()}%
+      \vfill
+    }%
+    \hfil
+    \vbox{\baselineskip=10pt
+      \refrow{Reference No.:}{\directlua{tex.sprint(lib.doc.refno)}}%
+      \smallskip
+      \refrow{Date:}{\directlua{tex.sprint(lib.doc.date)}}%
+      \smallskip
+      \reflabel{Version hash:}%
+      \mrow{\versionhashA}%
+      \mrow{\versionhashB}%
+    }%
+  }%
+}
+
+\footline={%
+  \hbox to \hsize{%
+    \vbox to 18mm{%
+      \vfill
+      \hbox{\directlua{cla_emit_footer_left()}}%
+      \vfill
+    }%
+    \hfil
+    \vbox to 18mm{%
+      \vfill
+      \hbox{\bffoot Page \folio}%
+      \vfill
+    }%
+  }%
+}
+
+\def\doctitle#1#2{%
+  \vskip 6mm
+  \centerline{\rmhead REBIS-ORG}%
+  \vskip 2mm
+  \centerline{\bftitle #1}%
+  \vskip 2mm
+  \centerline{\bf #2}%
+  \vskip 3mm
+  \hrule height 0.6pt
+  \vskip 5mm
+}
+
+\def\Sec#1#2{%
+  \vskip 4mm
+  \noindent{\bfsec #1.\quad #2}%
+  \par\nobreak\vskip 2mm
+}
+\def\P#1#2{%
+  \noindent{\bf #1}\quad #2\par
+}
+
+\def\blockhead#1{%
+  \noindent{\bfsec #1}%
+  \par\vskip 2mm
+}
+
+\newtoks\fieldtoks
+\fieldtoks={}
+\def\textfieldx#1#2#3#4#5#6#7{%
+  \pdfextension annot width #2 height #3 depth 1pt {%
+    /Subtype /Widget /FT /Tx /T (#1) /V (#4) /F 4 /Ff #5 /Q 0 /H /I
+    /AP << /N #7\space 0 R >>
+    /BS << /W 0.5 >>
+    /MK << /BC [0.45 0.45 0.45] /BG [#6] >>
+  }%
+  \edef\lastfieldno{\the\numexpr\pdffeedback lastannot\relax}%
+  \edef\act{\global\noexpand\fieldtoks={\the\fieldtoks\lastfieldno\space 0 R }}%
+  \act
+}
+\def\textfield#1#2#3{\textfieldx{#1}{#2}{#3}{}{0}{1 1 1}{\apfullnum}}
+\def\textfieldhalf#1#2#3{\textfieldx{#1}{#2}{#3}{}{0}{1 1 1}{\aphalfnum}}
+\def\staticfield#1#2{%
+  \vbox{\hrule height 0.4pt\hbox to #1{\vrule width 0.4pt height #2 depth 1pt\hfil\vrule width 0.4pt}\hrule height 0.4pt}}
+\def\filedbox#1#2{%
+  \vbox to 10mm{\hrule height 0.4pt
+    \hbox to #1{\vrule width 0.4pt
+      \vbox to 10mm{\hsize=#1\advance\hsize by -0.8mm \rm
+        \vfil
+        \directlua{tex.sprint(-2, lib.doc["#2"] or "")}%
+        \vfil\vfil}%
+      \vrule width 0.4pt}%
+    \hrule height 0.4pt}}
+\def\formfield#1#2{%
+  \iffiled
+    \hbox to #1{\filedbox{#1}{#2}\hss}%
+  \else
+    \ifarchival
+      \hbox to #1{\staticfield{#1}{10mm}\hss}%
+    \else
+      \ifdim#1=76mm
+        \hbox to #1{\textfieldhalf{#2}{#1}{10mm}\hss}%
+      \else
+        \hbox to #1{\textfield{#2}{#1}{10mm}\hss}%
+      \fi
+    \fi
+  \fi
+}
+\def\formspacing{\baselineskip=36pt }
+\def\formrow#1#2{{\formspacing
+  \noindent{\rm #1}\par\nobreak
+  \noindent\formfield{\hsize}{#2}\par}
+  \vskip 3mm
+}
+\def\formrowtwo#1#2#3#4{{\formspacing
+  \noindent{\rm #1}\hfil{\rm #3}\par\nobreak
+  \noindent\formfield{76mm}{#2}\hfil\formfield{76mm}{#4}\par}
+  \vskip 3mm
+}
+\def\emitacroform{%
+  \ifarchival\else\iffiled\else
+    \pdfextension catalog{%
+      /AcroForm << /Fields [\the\fieldtoks] /NeedAppearances true
+        /DA (0 g /Helv 10 Tf)
+        /DR << /Font << /Helv << /Type /Font /Subtype /Type1
+          /BaseFont /Helvetica >> >> >> >>
+    }%
+  \fi\fi
+}
+\def\docinfo#1#2{%
+  \pdfextension info {/Title (#1) /Author (#2) /Creator (rebis-org)}%
+  \setmetadata dc:title {#1}%
+  \setmetadata dc:creator {#2}%
+  \setmetadata dc:language {en}%
+}

@@ -1,0 +1,100 @@
+\input CLA.tex
+\input clauses.tex
+\input CCLA.vh
+
+\docfield{refno}{A/1/RES/1[U/N]}
+\docfield{date}{2026-09-19}
+\docfield{unit2}{Board}
+\docfield{unit3}{Executive Committee}
+\docfield{verghash}{}
+\docfield{email}{}
+\docfield{platformid}{}
+\docfield{sigdate}{}
+\setupagreement
+\docinfo{Corporate Contributor License Agreement (CCLA)}{rebis-org}
+
+\doctitle{Corporate Contributor License Agreement}{CCLA}
+
+\P{}{WHEREAS, rebis-org (the "Organization") maintains certain repositories and works subject to the organization-default contribution process set forth in CONTRIBUTING.md; and}
+
+\P{}{WHEREAS, the entity identified below ("You") wishes its Authorized Contributors to submit Contributions to the Organization on its behalf;}
+
+\P{}{NOW, THEREFORE, by signing this Agreement through a duly authorized representative, You accept and agree to the following terms and conditions with respect to all such Contributions. Except for the license granted herein to the Organization and to recipients of works distributed by the Organization, You reserve all right, title, and interest in and to Your Contributions.}
+
+\Sec{0}{Authority and scope}
+
+\P{0.1}{The person signing below represents and warrants that they are legally authorized to bind the entity named in the signature block to this Agreement.}
+
+\P{0.2}{This Agreement covers only Contributions made on Your behalf by Your Authorized Contributors within the scope of their employment or engagement (see \S1). Contributions the same individuals make in a personal capacity are not covered here; those require each individual's own Individual CLA (ICLA) with a personal email address. Where contributions in both capacities occur, both agreements shall be on file, and each code offering shall state the capacity in which it is made --- personal, or the entity name under this CCLA.}
+
+\Sec{1}{Definitions}
+
+\P{1.1}{"Contribution" means any original work of authorship, created by You or Your Authorized Contributors within the scope of their employment or engagement, and intentionally submitted for inclusion in any repository or work maintained by the Organization.}
+
+\P{1.2}{"Authorized Contributors" means the individuals listed in Schedule A (as updated from time to time under \S7), acting on Your behalf. You may add or remove individuals by updating Schedule A; removal shall take effect prospectively upon receipt by the Organization.}
+
+\P{1.3}{"Submitted" means any form of electronic, verbal, or written communication addressed to the Organization or its representatives, for the purpose of discussing or improving the work, but excluding any communication conspicuously marked or otherwise designated in writing as "Not a Contribution."}
+
+\P{1.4}{Third-party material not created by You or Your Authorized Contributors, and any of Your work already subject to explicit licensing terms at the time of submission, are outside the scope of this Agreement and remain governed by their respective terms (see \S5). Only original work submitted without explicit licensing terms is licensed under \S\S2--3.}
+
+\clausecopyright
+
+\clausepatent
+
+\Sec{4}{Representations}
+
+\P{}{You represent and warrant that: (a) each Contribution is an original creation of You or Your Authorized Contributors; (b) You are legally entitled to grant the licenses set forth above on behalf of Yourself and Your Authorized Contributors; (c) each Authorized Contributor is duly authorized to submit Contributions on Your behalf; (d) submissions include complete details of any third-party license or other restriction known to You attaching to any part of a Contribution; and (e) You shall notify the Organization of any facts or circumstances that render these representations inaccurate in any respect, and shall promptly update Schedule A upon any change in authorization.}
+
+\Sec{5}{Third-party work}
+
+\P{}{Work not constituting the original creation of You or Your Authorized Contributors shall be submitted separately from any Contribution, conspicuously marked as "Submitted on behalf of a third party: [named here]", together with complete details of its source and of any license or other restriction known to You. Such work is not licensed under \S\S2--3.}
+
+\Sec{6}{No support; as is}
+
+\P{}{Except to the extent support is voluntarily provided, no obligation to support any Contribution shall arise under this Agreement. Unless required by applicable law or agreed to in writing, Contributions are provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE.}
+
+\Sec{7}{Schedule A}
+
+\P{}{Schedule A lists Authorized Contributors by name, email, and platform IDs. Listing covers only contributions made on Your behalf; it does not replace any individual's ICLA for personal-capacity contributions. The initial Schedule A forms part of the signature block below. Updates shall take the form of a superseding Schedule A executed by an authorized representative in the same manner as this Agreement; the Organization shall confirm receipt in the code-offering discussion or by email reply.}
+
+\Sec{8}{Trademarks; no obligation}
+
+\P{}{Nothing in this Agreement shall be construed as granting any trade name, trademark, service mark, or other branding rights. The Organization shall be under no obligation to accept, include, or retain any Contribution.}
+
+\Sec{9}{Controlling version}
+
+\P{}{Your signature is affixed to the version identified by its SHA-256 hash in the signature block below and covers all repositories falling under CONTRIBUTING.md, unless a repository provides otherwise. Should a new version of this Agreement be published hereafter, re-execution (or, as applicable, the filing of a superseding Schedule A) is required only in respect of such new version or change in authorization.}
+
+\Sec{10}{Execution}
+
+\P{}{By signing below through a duly authorized representative, You agree to the above terms, in witness whereof this instrument is executed and the seal affixed where applicable.}
+
+\vskip 4mm
+\blockhead{Signature block}
+
+\formrow{Entity legal name:}{CCLA_entity_name}
+\formrowtwo{Representative (CCLA only):}{CCLA_rep_title}{Contact email:}{CCLA_contact_email}
+\noindent{\rm Seal (affix imprint below):}\par
+\hbox to \hsize{\hskip 8mm \hrulefill \hskip 8mm}%
+\vskip 3mm
+\formrowtwo{Date:}{CCLA_date}{Signature (sign or commit ref):}{CCLA_signature}
+
+\vskip 2mm
+\blockhead{Schedule A: Authorized Contributors}
+
+\P{}{List each individual authorized to contribute on the entity's behalf. Listing covers only contributions made on Your behalf; it does not replace any individual's ICLA for personal-capacity contributions.}
+
+\directlua{for i = 1, 3 do cla_schedrow(i) end}
+
+\P{}{If three rows are not enough, attach continuation sheets: each sheet repeats the four columns above, is marked "Schedule A, sheet N of M", and is signed in the same manner. State the count below; attached sheets form part of this Agreement.}
+
+\formrow{Continuation sheets attached (number; 0 if none):}{CCLA_sched_extra}
+
+\vskip 2mm
+\blockhead{Filing}
+
+\P{}{File the completed and signed agreement through the channel named in CONTRIBUTING.md for private matters. The filing office generates the footer barcode and HMAC check code from the SHA-256 digest of the version hash, email, platform ID, and date given above, confirms receipt in the code-offering discussion or by email reply, and records Schedule A updates filed as superseding schedules executed in the same manner.}
+
+\emitacroform
+
+\bye
