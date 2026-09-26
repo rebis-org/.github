@@ -9,20 +9,29 @@ assert(env.LUATEX and env.LUA, "LUATEX/LUA missing in .env")
 
 local v = assert(loadfile(vals))()
 
+local SIGNATURE = {
+  CCLA = {
+    "entity_name",
+    "rep_title",
+    "contact_email",
+    "date",
+    "signature",
+    "sched_extra",
+  },
+  ICLA = { "name", "email", "platform", "keyfp", "date", "signature" },
+}
+
+local SCHEDULE = { "name", "email", "ids", "from" }
+
 local FIELDS = { "verghash", "email", "platformid", "sigdate" }
-for _, stem in ipairs({
-  "entity_name",
-  "rep_title",
-  "contact_email",
-  "date",
-  "signature",
-  "sched_extra",
-}) do
+for _, stem in ipairs(SIGNATURE[job]) do
   FIELDS[#FIELDS + 1] = job .. "_" .. stem
 end
-for i = 1, 3 do
-  for _, s in ipairs({ "name", "email", "ids", "from" }) do
-    FIELDS[#FIELDS + 1] = ("%s_sched%d_%s"):format(job, i, s)
+if job == "CCLA" then
+  for i = 1, 3 do
+    for _, s in ipairs(SCHEDULE) do
+      FIELDS[#FIELDS + 1] = ("%s_sched%d_%s"):format(job, i, s)
+    end
   end
 end
 
