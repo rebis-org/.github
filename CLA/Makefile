@@ -90,7 +90,7 @@ check:
 	@status=0; \
 	git diff --quiet -- CCLA.pdf ICLA.pdf SHA256SUMS VERSIONS || status=1; \
 	if [ $$status -ne 0 ]; then \
-	  printf '%s\n' 'committed artifacts are stale — run make gate and commit' >&2; \
+	  printf '%s\n' 'committed artifacts are stale' >&2; \
 	else \
 	  printf '%s\n' 'REGENERATION MATCH'; \
 	fi; \
