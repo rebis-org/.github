@@ -1,0 +1,86 @@
+\input CLA.tex
+\input clauses.tex
+\input ICLA.vh
+
+\docfield{refno}{A/1/RES/2[U/N]}
+\docfield{date}{2026-09-19}
+\docfield{unit2}{Board}
+\docfield{unit3}{Executive Committee}
+\docfield{verghash}{}
+\docfield{email}{}
+\docfield{platformid}{}
+\docfield{sigdate}{}
+\setupagreement
+\docinfo{Individual Contributor License Agreement (ICLA)}{rebis-org}
+
+\doctitle{Individual Contributor License Agreement}{ICLA}
+
+\P{}{Thank you for Your interest in contributing to rebis-org (the "Organization").}
+
+\P{}{WHEREAS, the Organization maintains certain repositories and works subject to the organization-default contribution process set forth in CONTRIBUTING.md; and}
+
+\P{}{WHEREAS, You wish to submit Contributions to the Organization in a personal capacity;}
+
+\P{}{NOW, THEREFORE, by signing this Agreement, You accept and agree to the following terms and conditions with respect to all Your Contributions. Except for the license granted herein to the Organization and to recipients of works distributed by the Organization, You reserve all right, title, and interest in and to Your Contributions.}
+
+\Sec{0}{Parties and scope}
+
+\P{0.1}{"You" means the individual identified in the signature block below, acting in a personal capacity on Your own behalf and not on behalf of any employer or other entity.}
+
+\P{0.2}{All correspondence under this Agreement shall be conducted through a personal email address under Your long-term control. For the avoidance of doubt, no employer-owned address shall be used for such correspondence.}
+
+\P{0.3}{Contributions made on behalf of an employer or other entity are not covered by this Agreement; such contributions require a Corporate CLA ("CCLA") executed by an authorized representative and on file with the Organization. Where contributions in both capacities occur, both agreements shall be on file, and each code offering shall state the capacity in which it is made --- personal, or the entity name under its CCLA.}
+
+\Sec{1}{Definitions}
+
+\P{1.1}{"Contribution" means any original work of authorship, authored by You and intentionally submitted for inclusion in any repository or work maintained by the Organization.}
+
+\P{1.2}{"Submitted" means any form of electronic, verbal, or written communication addressed to the Organization or its representatives, for the purpose of discussing or improving the work, but excluding any communication conspicuously marked or otherwise designated in writing by You as "Not a Contribution."}
+
+\P{1.3}{Third-party material not authored by You, and any of Your own work already subject to explicit licensing terms at the time of submission, are outside the scope of this Agreement and remain governed by their respective terms (see \S5). Only Your original work submitted without explicit licensing terms is licensed under \S\S2--3.}
+
+\clausecopyright
+
+\clausepatent
+
+\Sec{4}{Representations}
+
+\P{}{You represent and warrant that: (a) each of Your Contributions is Your original creation; (b) You are legally entitled to grant the licenses set forth above; (c) to the extent any employer holds rights in intellectual property created by You, You have obtained permission to contribute in a personal capacity, or such employer has waived its rights with respect to Your Contributions, or a separate CCLA executed by such employer is on file --- otherwise, You shall contribute solely through the CCLA path; (d) Your submissions include complete details of any third-party license or other restriction known to You attaching to any part of Your Contributions; and (e) You shall notify the Organization of any facts or circumstances that render these representations inaccurate in any respect.}
+
+\Sec{5}{Third-party work}
+
+\P{}{Work not constituting Your original creation shall be submitted separately from any Contribution, conspicuously marked as "Submitted on behalf of a third party: [named here]", together with complete details of its source and of any license or other restriction known to You. Such work is not licensed under \S\S2--3.}
+
+\Sec{6}{No support; as is}
+
+\P{}{Except to the extent You desire to provide support, You are under no obligation to support Your Contributions. Unless required by applicable law or agreed to in writing, Your Contributions are provided on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied, including, without limitation, any warranties or conditions of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A PARTICULAR PURPOSE.}
+
+\Sec{7}{Trademarks}
+
+\P{}{Nothing in this Agreement shall be construed as granting permission to use the trade names, trademarks, service marks, product names, logotypes, or other branding of the Organization or of any contributor, except as required to fulfill notice obligations or as otherwise permitted by applicable law or the rights holder.}
+
+\Sec{8}{No obligation to accept}
+
+\P{}{The Organization shall be under no obligation to accept, include, or retain any Contribution.}
+
+\Sec{9}{Controlling version}
+
+\P{}{Your signature is affixed to the version identified by its SHA-256 hash in the signature block below and covers all repositories falling under CONTRIBUTING.md, unless a repository provides otherwise. Should a new version of this Agreement be published hereafter, re-execution is required only in respect of such new version.}
+
+\Sec{10}{Execution}
+
+\P{}{By signing below, You agree to the above terms.}
+
+\vskip 4mm \blockhead{Signature block}
+
+\P{}{Complete every field below, then sign. Use a personal email address under Your long-term control; employer-owned addresses are excluded.}
+
+\formrow{Name:}{ICLA_name} \formrow{Personal email:}{ICLA_email} \formrow{Platform IDs:}{ICLA_platform} \formrow{Signing key fingerprint (GPG/SSH):}{ICLA_keyfp} \formrowtwo{Date:}{ICLA_date}{Signature (sign or commit ref):}{ICLA_signature}
+
+\vskip 2mm \blockhead{Filing}
+
+\P{}{File the completed and signed agreement through the channel named in CONTRIBUTING.md for private matters. The filing office generates the footer barcode and HMAC check code from the SHA-256 digest of the version hash, email, platform ID, and date given above, and confirms receipt in the code-offering discussion or by email reply.}
+
+\emitacroform
+
+\bye

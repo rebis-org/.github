@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Discussions
+    url: https://github.com/orgs/rebis-org/discussions
+    about: Questions, defect reports, proposals, and other public-record matters. Search first; start here.
+  - name: Security policy
+    url: https://github.com/rebis-org/.github/blob/main/SECURITY.md
+    about: Suspected vulnerabilities go to a repository's private vulnerability reporting, never an issue or discussion.
+  - name: Support
+    url: https://github.com/rebis-org/.github/blob/main/SUPPORT.md
+    about: Ways to get help with the organization's software.
+  - name: Code of Conduct
+    url: https://github.com/rebis-org/.github/blob/main/CODE_OF_CONDUCT.md
+    about: Standards for engaging in the community, and how to report violations.

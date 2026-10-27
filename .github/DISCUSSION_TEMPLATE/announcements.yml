@@ -1,0 +1,34 @@
+title: "[<repo>] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Announcements. Authored by maintainers; one announcement per discussion.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      description: The repository this concerns, or "organization-wide".
+    validations:
+      required: true
+  - type: textarea
+    id: announcement
+    attributes:
+      label: Announcement
+      description: What is announced, effective when, and what action, if any, is expected of readers.
+    validations:
+      required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Background, migration notes, or supporting links. Do not paste secrets.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing announcements and found no duplicate.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

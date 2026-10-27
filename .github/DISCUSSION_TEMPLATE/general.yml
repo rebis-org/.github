@@ -1,0 +1,53 @@
+title: "[<repo>] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Public-record matters: defect reports, proposals, and other matters that need open technical review. Questions go to the Question / Answer category; suspected security vulnerabilities never come here: use the repository's private vulnerability reporting. Search existing discussions first; one matter per discussion.
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      description: The repository this concerns, or "organization-wide".
+    validations:
+      required: true
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: |
+        Defects: expected versus actual behaviour. Proposals: what is missing or unsatisfactory, and the proposed outcome.
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction
+      description: Defects only. Steps to reproduce, with a minimal reproducible example where possible.
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit SHA
+  - type: input
+    id: environment
+    attributes:
+      label: Platform and toolchain
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Desired outcome, candidate fix, or API sketch. Code offerings follow the fork path in the contributing guide.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Scope, impact, logs, prior art, or supporting links. Do not paste secrets.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing discussions and found no duplicate.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true

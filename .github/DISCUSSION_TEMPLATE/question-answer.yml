@@ -1,0 +1,45 @@
+title: "[<repo>] "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Questions on using, building, or understanding the organization's software. Search existing questions first; one question per discussion; mark the answer that resolves it.
+  - type: textarea
+    id: question
+    attributes:
+      label: Question
+      description: What you are trying to do, what you expected, and what happened instead.
+    validations:
+      required: true
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      description: The repository this concerns, or "organization-wide".
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit SHA
+  - type: input
+    id: environment
+    attributes:
+      label: Platform and toolchain
+  - type: textarea
+    id: example
+    attributes:
+      label: Minimal example
+      description: The smallest self-contained example that shows what you are asking about, where possible.
+  - type: textarea
+    id: attempts
+    attributes:
+      label: What you have tried
+      description: Steps, documentation, and workarounds already attempted.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing questions and found no duplicate.
+          required: true

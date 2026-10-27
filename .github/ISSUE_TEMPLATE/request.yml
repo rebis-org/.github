@@ -1,0 +1,63 @@
+name: Request
+description: Record planned work.
+labels: ["status/todo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are maintainers' internal records; inbound matters arrive as discussions, per the contributing guide.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Kind
+      description: Determines the kind label applied during triage.
+      options:
+        - "kind/corrective"
+        - "kind/adaptive"
+        - "kind/perfective"
+        - "kind/preventive"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem
+      description: What is missing, incorrect, or unsatisfactory.
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+      description: Desired outcome. Code sketches are welcome.
+    validations:
+      required: true
+  - type: input
+    id: origin
+    attributes:
+      label: Origin
+      description: Link to the discussion this record mirrors, if any.
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Workarounds attempted or designs rejected.
+  - type: checkboxes
+    id: compatibility
+    attributes:
+      label: Compatibility
+      options:
+        - label: This change is additive.
+        - label: This change carries a breaking mark (`!` with `BREAKING CHANGE:`).
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing issues and found no duplicate.
+          required: true
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Related issues, prior art, or supporting links.

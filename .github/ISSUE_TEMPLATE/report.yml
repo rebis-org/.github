@@ -1,0 +1,66 @@
+name: Report
+description: Record an actionable defect.
+labels: ["kind/corrective", "status/todo"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Issues are maintainers' internal records; inbound matters arrive as discussions, per the contributing guide. Suspected security vulnerabilities never come here.
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: Concise description of the defect.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal, self-contained reproduction. Smaller cases are triaged faster.
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behavior
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Actual behavior
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Version or commit SHA
+      description: Affected branch, tag, or commit.
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Platform and toolchain
+    validations:
+      required: true
+  - type: input
+    id: origin
+    attributes:
+      label: Origin
+      description: Link to the discussion this record mirrors, if any.
+  - type: textarea
+    id: context
+    attributes:
+      label: Additional context
+      description: Logs, stack traces, screenshots, or related issues. Do not paste secrets.
+  - type: checkboxes
+    id: checks
+    attributes:
+      label: Confirmation
+      options:
+        - label: I have searched existing issues and found no duplicate.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true
