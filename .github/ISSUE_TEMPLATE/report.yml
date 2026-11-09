@@ -17,7 +17,7 @@ body:
     id: steps
     attributes:
       label: Steps to reproduce
-      description: Minimal, self-contained reproduction. Smaller cases are triaged faster.
+      description: Minimal, self-contained reproduction. Smaller cases are triaged faster. See [How to Report Bugs Effectively](https://www.chiark.greenend.org.uk/~sgtatham/bugs.html) for what makes a reproduction actionable.
     validations:
       required: true
   - type: textarea
@@ -55,6 +55,10 @@ body:
     attributes:
       label: Additional context
       description: Logs, stack traces, screenshots, or related issues. Do not paste secrets.
+  - type: markdown
+    attributes:
+      value: |
+        Confirmations are checks to verify, not a EULA to accept.
   - type: checkboxes
     id: checks
     attributes:
